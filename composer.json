@@ -1,0 +1,13 @@
+{
+    "require": {
+        "monolog/monolog": "3.3.1",
+              "phaser/phaser": "^3.55.0",
+              "brianium/parsec": "^1.0",
+              "mothereffingtextshadow/jquery.textshadow.min.js": "^1.0",
+              "brianium/peast": "^1.0",
+              "popperjs/popper-core": "^2.10",
+              "bodymovin/bodymovin": "^5.7",
+              "airbnb/lottie-web": "^5.7"
+    
+          }
+    }
