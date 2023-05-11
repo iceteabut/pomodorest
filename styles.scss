@@ -1,0 +1,528 @@
+
+:root {
+    --main-accent-color-work: #FBA271;
+    --light-accent-color-work: lighten(var(--main-accent-color-work), 15%);
+    --dark-accent-color-work: desaturate(darken(var(--main-accent-color-work), 20%), 30%);
+    --main-accent-color-rest: #6ACC80;
+    --light-accent-color-rest: lighten(var(--main-accent-color-rest), 15%);
+    --dark-accent-color-rest: desaturate(darken(var(--main-accent-color-rest), 20%), 30%);
+    --main-accent-color: #FBA271;
+    --light-accent-color:lighten(var(--main-accent-color-work), 15%);
+    --dark-accent-color:desaturate(darken(var(--main-accent-color-work), 20%), 30%);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  h3 {
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 46px !important;
+    font-weight: 600 !important;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 56px !important;
+  }
+  
+  .circle h2 {
+    font-size: 36px !important;
+    font-weight: 600;
+  }
+  
+  .loginOptions h2:hover {
+    cursor: pointer;
+  }
+  
+  .circle h4:hover {
+    cursor: pointer;
+  }
+  
+  #settings h4:hover {
+    cursor: pointer;
+  }
+  
+  input {
+    border-radius: 12px !important;
+  }
+  
+  button {
+    border-radius: 12px !important;
+  }
+  
+  #timer h4 {
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 36px !important;
+  }
+  
+  header {
+    background-color: rgb(255, 255, 255);
+    font-family: "Lato", sans-serif;
+    color: #5F5653;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .header.hide {
+    transform: translateY(-100%);
+  }
+  
+  nav {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 60px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  nav li {
+    margin: 0 30px;
+  }
+  
+  nav a {
+    position: relative; /* Add relative position to make the underline work */
+    text-decoration: none;
+    font-size: 20px;
+    color: #5F5653;
+    display: inline-block;
+    padding: 10px;
+  }
+  
+  /* Add styles for the underline and color change on hover */
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fcbc32;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  nav a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  nav a:hover {
+    color: rgb(255, 215, 142);
+  }
+  
+  /* Add styles for the active link */
+  nav a.active {
+    color: orange;
+  }
+  
+  nav a.active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: orange;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /*position bckgr circles*/
+  .circleBckgr {
+    position: absolute;
+    border-radius: 50%;
+    width: 750px;
+    height: 750px;
+    z-index: -1;
+  }
+  
+  #circleBckgr1 {
+    background-color: var(--dark-accent-color);
+    top: 5%;
+    left: -10%;
+  }
+  
+  #circleBckgr2 {
+    background-color: var(--main-accent-color);
+    top: 30vh;
+    left: 45vh;
+  }
+  
+  #circleBckgr3 {
+    background-color: var(--light-accent-color);
+    top: -35%;
+    left: 80%;
+  }
+  
+  #circleBckgr4 {
+    background-color: var(--dark-accent-color);
+    top: 20vh;
+    left: 54%;
+  }
+  
+  #circleBckgr5 {
+    background-color: var(--light-accent-color);
+    top: 20vh;
+    left: -25%;
+  }
+  
+  #circleBckgr6 {
+    background-color: var(--dark-accent-color);
+    top: 20vh;
+    left: -8%;
+  }
+  
+  #circleBckgr7 {
+    background-color: var(--main-accent-color);
+    /*top: calc(50% - 75px);
+    left: calc(50% - 450px);*/
+  }
+  
+  #circleBckgr8 {
+    background-color: var(--dark-accent-color);
+    top: -20%;
+    left: 80%;
+  }
+  
+  #circleBckgr9 {
+    background-color: var(--light-accent-color);
+    top: 50%;
+    left: -30%;
+  }
+  
+  #circleBckgr10 {
+    background-color: var(--dark-accent-color);
+    top: 20vh;
+    left: 3%;
+  }
+  
+  #circleBckgr11 {
+    background-color: var(--light-accent-color);
+    top: 65%;
+    left: 85%;
+  }
+  
+  main {
+    padding-top: 80px; /* Adjust to match header height */
+  }
+  
+  section {
+    min-height: calc(100vh - 80px + 300px); /* Adjust to match header height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70px;
+  }
+  
+  .section-heading {
+    font-size: 96px; /* Change the font size of section headings */
+    margin: 0;
+    position: absolute;
+  }
+  
+  .circleContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .circle {
+    width: 80vh;
+    height: 80vh;
+    border-radius: 50%;
+    opacity: 0.9;
+    background-color: var(--main-accent-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loginInfo,
+  .registerInfo {
+    display: none;
+  }
+  
+  /* Name centered in the middle vertically, 70px margin from the right for About section */
+  #about .section-heading {
+    top: 0%;
+    position: relative !important;
+  }
+  
+  /* Vertically center horizontally 50px from the left for Rest section */
+  #rest .section-heading {
+    top: 50%;
+    left: 80px;
+    transform: translateY(-50%);
+  }
+  
+  /* Vertically center horizontally 30px from the right for Tasks section */
+  #tasks .section-heading {
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+  }
+  
+  /* 70px from section top vertically and 50px margin from the right for Settings section */
+  #settings .section-heading {
+    top: 70px;
+    right: 80px;
+  }
+  
+  /* 50px from section top vertically and horizontally 140px from the left for Stats section */
+  #stats .section-heading {
+    top: 50px;
+    right: 140px;
+  }
+  
+  /* Position section headings relative to their respective sections */
+  section {
+    position: relative;
+    height: calc(100vh - 100px); /* Take into account the height of the header */
+    padding-top: 80px; /* Move content below the header */
+  }
+  
+  .timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+    padding-left: 10%;
+  }
+  
+  .timer {
+    font-size: 296px;
+    font-family: "Lato", sans-serif;
+    color: #524843;
+  }
+  
+  .timer-info {
+    width: 592px;
+    font-size: 46px;
+  }
+  
+  .circleContainer2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(179, 179, 179, 0.5);
+    display: none !important;
+  }
+  
+  .circle2 {
+    width: 750px !important;
+    height: 750px !important;
+    border-radius: 50%;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-accent-color-rest);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+    padding: 50px;
+    padding-top: 20px !important;
+    padding-bottom: 150px;
+  }
+  
+  .circle2 span {
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 24px;
+  }
+  
+  .closeButton2 {
+    background-color: var(--dark-accent-color-rest) !important;
+  }
+  
+  .section-heading {
+    font-size: 96px; /* Change the font size of section headings */
+    margin: 0;
+    position: absolute;
+  }
+  
+  /* Name centered in the middle vertically, 70px margin from the right for About section */
+  .about-content {
+    margin-left: 70px;
+    padding-right: 50%;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+  }
+  
+  .about-text {
+    font-size: 24px;
+    color: #1A1A1A;
+    font-family: "Lato", sans-serif;
+  }
+  
+  #rest {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .circlesRestContainer {
+    width: 70%;
+    margin: 0 auto;
+    overflow-x: scroll;
+    margin-left: 30%;
+    white-space: nowrap; /* keep circles in a single line */
+  }
+  
+  .circleRest {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--main-accent-color);
+    margin-right: 100px; /* add space between circles */
+    text-align: center;
+    width: 750px;
+    height: 750px;
+    line-height: 1.2; /* adjust the line-height to the same height as the circle */
+    padding: 30px;
+  }
+  
+  .circleRest span {
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 24px;
+  }
+  
+  .circleRest:last-child {
+    margin-right: 0; /* remove margin from last circle */
+  }
+  
+  .underline-div {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+  }
+  
+  .underline-line {
+    height: 7px;
+    width: 100%;
+    background-color: orange;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  #task {
+    width: 40%;
+  }
+  
+  #settings label {
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 24px;
+  }
+  
+  .colorWrapper {
+    display: inline-block;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 58px;
+    width: 125px !important;
+    padding: 0px;
+    margin-left: 12px;
+    margin-right: 0x;
+  }
+  
+  .colorWrapper input[type=color] {
+    display: block;
+    width: 200%;
+    height: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin-left: -20px;
+  }
+  
+  #settings li {
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 20px;
+  }
+  
+  #settings button {
+    font-family: "Lato", sans-serif !important;
+    color: #ffffff !important;
+    font-size: 20px;
+  }
+  
+  #buttonSettings {
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 36px;
+    background-color: #fcbc32 !important;
+  }
+  
+  #stats button, .circle button {
+    background-color: var(--dark-accent-color) !important;
+    color: #fff !important;
+    font-family: "Lato", sans-serif !important;
+    border: none;
+    font-size: 24px;
+  }
+  
+  #stats h4 {
+    font-family: "Lato", sans-serif !important;
+    color: #524843 !important;
+    font-size: 24px !important;
+  }
+  
+  #stats {
+    overflow: hidden;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+  
+  /*# sourceMappingURL=styles.css.map */
+  
