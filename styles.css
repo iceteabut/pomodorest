@@ -960,13 +960,111 @@ h2{
 }
 
 .taskAdd{
-  margin-top:100vw;
+  margin-top:120vw;
 }
 #buttonTasks {
   
   font-size: 1rem !important;
 
 }
+
+#settings .section-heading {
+  top: 8vh;
+  right: 10vw;
+}
+
+#circleBckgr7 {
+  background-color: var(--main-accent-color);
+  top: 80vw;
+  
+  background-image: none;
+}
+
+#circleBckgr8 {
+  background-color: var(--dark-accent-color);
+  top: -20vw;
+  left: 60%;
+}
+
+#circleBckgr9 {
+  background-color: var(--light-accent-color);
+  top: 180vw;
+  left: 0%;
+  margin-left:5vw;
+  
+}
+
+#input-fields{
+  padding-left: 15px !important;
+}
+
+#settings label {
+
+  font-size: 1rem;
+}
+
+.colorWrapper {
+  display: inline-block;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 2rem;
+  width: 4rem !important;
+  padding: 0px;
+  margin-left: 12px;
+  margin-right: 0x;
+}
+
+.colorWrapper input[type=color] {
+  display: block;
+  width: 200%;
+  height: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  margin-left: -3.2vh;
+}
+
+#settings li {
+  font-family: "Lato", sans-serif !important;
+  color: #524843 !important;
+  font-size: 1rem;
+  
+}
+
+#settings button {
+  font-family: "Lato", sans-serif !important;
+ 
+  font-size: 1rem;
+}
+
+#buttonSettings {
+  font-family: "Lato", sans-serif !important;
+  color: #524843 !important;
+  font-size: 1rem;
+  background-color: rgb(235, 142, 22) !important;
+}
+
+#buttonTasks {
+  font-family: "Lato", sans-serif !important;
+  color: #524843 !important;
+  font-size: 1rem !important;
+  background-color: rgb(235, 142, 22) !important;
+}
+
+#stats button, .circle button {
+  background-color: var(--dark-accent-color) !important;
+  color: #fff !important;
+  font-family: "Lato", sans-serif !important;
+  border: none;
+  font-size: 1rem;
+}
+
+#settings span {
+  font-size: 0.6rem;
+}
+
 
 }
 /*
