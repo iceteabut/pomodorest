@@ -834,7 +834,7 @@ $dayGoal = $_SESSION['minutes_goal'];
     
     <div class="game2 text-wrap d-flex flex-column align-items-center justify-content-center">
         <h4 class="pt-3 mt-2">Kartuvės</h4>
-    <div class="Hangman">
+    <div class="Hangman" width="100" height="auto">
       
     </div>
     <div class="word">
@@ -845,11 +845,21 @@ $dayGoal = $_SESSION['minutes_goal'];
     </div>
     <div class="message">
     </div>
-    <div class="d-flex flex-row flex-md-column flex-lg-column flex-xl-column flex-xxl-column">
-        <button class="again  btn btn-lg text-center fs-4 mb-1">Spėti kitą</button>
-       <button class="closeButton3  btn btn-lg text-center fs-4 ">Uždaryti</button>
+    <div class="d-flex flex-row ">
+        <button class="again  btn  text-center fs-5 me-1">Spėti kitą</button>
+       <button class="closeButton3  btn text-center fs-5 ms-1 ">Uždaryti</button>
     </div>
     </div>
+
+    <div class="game3 text-wrap d-flex flex-column align-items-center justify-content-center">
+        <div class="title mt-5 pt-4 pb-2"><h4>Laikas poilsiui!</h4></div>
+        <div id="game3" class=""><script src="gamePhaser.js"></script></div>
+        <div  class="d-flex flex-row col-8 justify-content-center">
+        <button class="restart  btn p-0 mb-0 text-center me-2 " onclick="reloadGame()">Per naujo</button>
+        <button class="closeButton3   p-0 mb-0  btn btn-lg text-center ms-2 ">Uždaryti</button></div>
+    </div>
+
+
     </div>
     </div>
 
@@ -868,7 +878,7 @@ $dayGoal = $_SESSION['minutes_goal'];
 
       <div class="timer-info d-flex flex-wrap justify-content-center align-items-center col-12">
         <h3 class="timer-label text-center col col-8 com-md-4 col-lg-4 col-xl-4 col-xxl-4">DARBAS</h3>
-        <h3 class="timer-progress col-3 col-md-2 col-lg-2 col-xl-2 col-xxl-2 ">1/3</h3>
+        <h3 class="timer-progress col-3 col-md-2 col-lg-2 col-xl-2 col-xxl-2 ">1/4</h3>
       
         <div class="timer-icons d-flex flex-row text-center justify-content-center align-items-center  mt-sm-4 mt-md-4 mt-0 col-12 com-md-5 col-lg-5 col-xl-5 col-xxl-5  ">
           <div class="timer-icon col-3" id="timerPlay">
@@ -1389,19 +1399,20 @@ setup();
    
 </section>
     </main>
-
+<footer class="d-flex flex-wrap justify-content-center align-items-center p-5" style = "z-index:-2"> PomoDoRest, 2023 | Aiste Butrimaite
+  </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
     <script src="script.js" data-loggedin="<?php echo $_SESSION['loggedIn']; ?>"></script>
 
-    //FIREBASE
+
     <script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+ /* import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";*/
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
-
+/*
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
@@ -1416,7 +1427,7 @@ setup();
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const analytics = getAnalytics(app);*/
 </script>
 
   </body>

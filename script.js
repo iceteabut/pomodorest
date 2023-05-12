@@ -285,7 +285,7 @@ window.addEventListener('mousemove', (e) => {
   circle3.style.display = 'none';
   circleContainer3.style.display = 'none';
   circleContainer3.style.setProperty('style','none','!important');
-  console.log("sss");
+  
   
 });
 
@@ -489,9 +489,10 @@ let restTipText = document.querySelector('.restTip');// rest tip text
 let workTime = workInput.value*60; //ACTUAL VALUE
 let restGame1 = document.querySelector('.game1');
 let restGame2 = document.querySelector('.game2');
+let restGame3 = document.querySelector('.game3');
 restGame1.style.display = "none";
 restGame2.style.display = "none";
-console.log(workTime);
+restGame3.style.display = "none";
 let gameIdx = 1;
  //const workTime = 3; // 3 seconds for demonstration purposes TEST VALUE
 let restTime = breakInput.value*60;//ACTUAL VALUE
@@ -500,7 +501,7 @@ let timerInterval;
  let timeLeft = workTime; //starts with work
  console.log(timeLeft);
  let isResting = false;//DARBAS
- let sessionNumber = 1;//sessions before long break - 1,2,3 PETRAUKA 1,2,3..
+ let sessionNumber = 1;//sessions before long break - 1,2,3,4 PETRAUKA 1,2,3..
  let roundCount = 1;//which DARBAS-POILSIS (as 1 round) round is that
  let currentTaskRound = 1; //which round of current task is that,changes according to tasksArray[i].round(total rounds of a task) value
  //let breakTime = 6;//6 seconds for demonstration purposes
@@ -508,6 +509,9 @@ let timerInterval;
  //let breakTime = 15;//PETRAUKA duration TEST VALUE
  let taskInx = 0;
  let totalWorkMinutes = 0;
+
+
+
 
 
  if(restTime >= 15*60) hasBreak = 5*60;//ACTUAL VALUE
@@ -602,22 +606,26 @@ let timerInterval;
         isResting = false;
         //nera uzduociu
         if(tasksArr.length == 0){
-          if (sessionNumber <= 3) {
+          if (sessionNumber <= 4) {
             updateColors();
-          timerProgress.innerText = `${sessionNumber}/3`;
+          timerProgress.innerText = `${sessionNumber}/4`;
           
           timerProgress.style.visibility = "visible";
         } 
-        else if (sessionNumber % 4 === 0) {
+        else if (sessionNumber % 5 === 0) {
           reverseCol();
           restGame.style.setProperty("display", "flex", "important");
           if(gameIdx==1){restGameCont.innerHTML=restGame1.innerHTML;
           game();
           gameIdx=2;
           }
+          else if(gameIdx==2){restGameCont.innerHTML=restGame1.innerHTML;
+            game();
+            gameIdx=3;
+            }
           else{ 
-            restGameCont.innerHTML=restGame2.innerHTML;
-          initializeGame();
+          restGameCont.innerHTML=restGame3.innerHTML;
+          reloadGame();
           gameIdx=1;
           }
           //play assets/break.mp3
@@ -651,14 +659,14 @@ let timerInterval;
           timerLabel.innerText = 'DARBAS';
           timerProgress.style.visibility = "visible";
           timeLeft = workTime;
-          timerProgress.innerText = `${sessionNumber}/3`;
+          timerProgress.innerText = `${sessionNumber}/4`;
           
         }
       }
         else{
-        if (sessionNumber <= 3) {
+        if (sessionNumber <= 4) {
           updateColors();
-          timerProgress.innerText = `${sessionNumber}/3`;
+          timerProgress.innerText = `${sessionNumber}/4`;
          
           timerProgress.style.visibility = "visible";
         } 
@@ -670,20 +678,26 @@ let timerInterval;
           intervalSound.play();
             //timerTaskName.innerText="";
             timerLabel.innerText = 'PERTRAUKA';
-            restTip.style.display = "flex";
+            
             restTip.style.setProperty("display", "none", "important");
             flowerContainer.style.setProperty("display", "flex", "important");
             timerProgress.style.visibility = "hidden";
             restGame.style.setProperty("display", "flex", "important");
             if(gameIdx==1){
-              
+            restGameCont.innerHTML=restGame1.innerHTML;
             game();
             gameIdx=2;
             }
-            else{ 
-            
+            else if(gameIdx==2){ 
+            restGameCont.innerHTML=restGame2.innerHTML;
             initializeGame();
+            gameIdx=3;
+            }
+            else{
+            restGameCont.innerHTML=restGame3.innerHTML;
+            reloadGame();
             gameIdx=1;
+
             }
             timeLeft = breakTime;
             sessionNumber = 1;
@@ -1640,7 +1654,7 @@ function update ()
 /*
 var config = {
   type: Phaser.AUTO,
-  width: 800,
+  width: 600,
   height: 600,
   physics: {
       default: 'arcade',
@@ -1656,12 +1670,18 @@ var config = {
   }
 };
 
-var game = new Phaser.Game(config);
+var game3 = new Phaser.Game(config);
 var player;
-var desk;
+var desk1;
+var desk2;
+var desk3;
+var desk4;
+var desk5;
+var desk6;
 var coffee;
 var water;
 var plant;
+var pillow;
 var book;
 var score = 0;
 var scoreText;
@@ -1671,23 +1691,35 @@ var timerEvent;
 
 function preload ()
 {
-  this.load.image('background', 'assets/background.jpg');
+  //this.load.image('background', 'assets/background.jpg');
   this.load.image('player', 'assets/player.png');
-  this.load.image('desk', 'assets/yoga.png');
+  this.load.image('desk1', 'assets/desk1.png');
+  this.load.image('desk3', 'assets/desk1.png');
+  this.load.image('desk5', 'assets/desk1.png');
+  this.load.image('desk2', 'assets/desk2.png');
+  this.load.image('desk4', 'assets/desk2.png');
+  this.load.image('desk6', 'assets/desk2.png');
   this.load.image('coffee', 'assets/coffee.png');
   this.load.image('water', 'assets/water.png');
   this.load.image('plant', 'assets/plant.png');
-  this.load.image('book', 'assets/water.png');
+  this.load.image('book', 'assets/book.png');
+  this.load.image('pillow', 'assets/pillow.png');
 }
 
 function create ()
 {
-  this.add.image(400, 300, 'background');
+  //this.add.image(400, 300, 'background');
 
-  desk = this.physics.add.staticImage(400, 300, 'desk');
+  desk1 = this.physics.add.staticImage(100, 150, 'desk1');
+  desk2 = this.physics.add.staticImage(450, 500, 'desk2');
+  desk3 = this.physics.add.staticImage(200, 300, 'desk3');
+  desk4 = this.physics.add.staticImage(150, 400, 'desk4');
+  desk5 = this.physics.add.staticImage(300, 250, 'desk5');
+  desk6 = this.physics.add.staticImage(400, 450, 'desk6');
   coffee = this.physics.add.image(300, 450, 'coffee').setInteractive({ cursor: 'pointer' });
   water = this.physics.add.image(400, 450, 'water').setInteractive({ cursor: 'pointer' });
   plant = this.physics.add.image(500, 450, 'plant').setInteractive({ cursor: 'pointer' });
+  pillow = this.physics.add.image(250, 300, 'pillow').setInteractive({ cursor: 'pointer' });
   book = this.physics.add.image(400, 200, 'book').setInteractive({ cursor: 'pointer' });
 
   player = this.physics.add.sprite(50, 50, 'player');
@@ -1696,7 +1728,12 @@ function create ()
   scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
   timeText = this.add.text(650, 16, 'Time: ' + timeLimit, { fontSize: '32px', fill: '#000' });
 
-  this.physics.add.collider(player, desk);
+  this.physics.add.collider(player, desk1);
+  this.physics.add.collider(player, desk2);
+  this.physics.add.collider(player, desk3);
+  this.physics.add.collider(player, desk4);
+  this.physics.add.collider(player, desk5);
+  this.physics.add.collider(player, desk6);
 
   this.physics.add.overlap(player, coffee, function(){
       score += 10;
@@ -1726,6 +1763,13 @@ function create ()
       book.disableBody(true, true);
   }, null, this);
 
+  this.physics.add.overlap(player, pillow, function(){
+    score += 20;
+    scoreText.setText('Score: ' + score);
+    alert('Resting part of work is so important! Dont forget good nights sleep!');
+    pillow.disableBody(true, true);
+}, null, this);
+
   cursors = this.input.keyboard.createCursorKeys();
 
   timerEvent = this.time.addEvent({
@@ -1751,26 +1795,27 @@ function update ()
 {
   if (cursors.left.isDown)
   {
-      player.setVelocityX(-160);
+      player.setVelocityX(-130);
   }
   else if (cursors.right.isDown)
   {
-      player.setVelocityX(160);
+      player.setVelocityX(130);
   }
 
   if (cursors.up.isDown)
   {
-      player.setVelocityY(-160);
+      player.setVelocityY(-130);
   }
   else if (cursors.down.isDown)
   {
-      player.setVelocityY(160);
+      player.setVelocityY(130);
   }
 }*/
+
 //GAME3
 
 // Define the list of words to choose from
-const words = [
+let words = [
   'JOGA',
   'LAIKYSENA',
   'PARETAS',
@@ -1778,16 +1823,21 @@ const words = [
   'LAIKMATIS',
   'POILSIS',
   'MEDITACIJA',
-  'KONCENTRACIJA'
+  'KONCENTRACIJA',
+  'VANDUO',
+  'PRODUKTYVUMAS',
+  
 ];
-
-// Define the maximum number of incorrect guesses allowed
-const maxWrongGuesses = 8;
 
 let wordToGuess = '';
 let guessedLetters = [];
-let wrongGuesses = 0;
+const maxWrongGuesses = 6;
 let imageCount = 1;
+let wrongGuesses = 0;
+imageCount = 1;
+
+// Define the maximum number of incorrect guesses allowed
+
 
 // Select random word from the list
 function selectRandomWord() {
@@ -1796,10 +1846,12 @@ function selectRandomWord() {
 
 // Initialize the game
 function initializeGame() {
+
+
+
   wordToGuess = selectRandomWord();
   guessedLetters = Array(wordToGuess.length).fill('_');
-  wrongGuesses = 0;
-  imageCount = 1;
+
 
   // Update the word display
   updateWordDisplay();
@@ -1890,11 +1942,17 @@ function checkWinOrLose() {
     });
   }
 }
-const againBtn = document.querySelector('.again');
-
-againBtn.addEventListener('click', function () {
-  initializeGame();
-});
 
 // Initialize the game when the page loads
 //window.addEventListener('load', initializeGame);
+
+
+ const againBtn = document.querySelector('.again');
+
+againBtn.addEventListener('click', function () {
+   imageCount = 1;
+   wrongGuesses = 0;
+  imageCount = 1;
+   guessedLetters = [];
+   initializeGame();
+});

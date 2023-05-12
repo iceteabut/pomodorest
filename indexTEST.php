@@ -796,7 +796,7 @@ $dayGoal = $_SESSION['minutes_goal'];
           
          
         <div class="options fs-4 m-1 row">
-            <button class="rock btn btn-lg col">Akmuo</button>
+            <button class="rock btn btn-lg col">Stapleris</button>
             <button class="paper btn btn-lg col">Popierius</button>
             <button class="scissor btn btn-lg col">Žirklės</button>    
         </div>
@@ -825,6 +825,17 @@ $dayGoal = $_SESSION['minutes_goal'];
        <button class="closeButton3  btn btn-lg text-center fs-4 ">Uždaryti</button>
     </div>
     </div>
+
+    <div class="game3 text-wrap d-flex flex-column align-items-center justify-content-center">
+        <div class="title mt-5 pt-4 pb-2"><h4>Laikas poilsiui!</h4></div>
+        <div id="game3" class=""><script src="gamePhaser.js"></script></div>
+        <div  class="d-flex flex-row col-8 justify-content-center">
+        <button class="restart  btn p-0 mb-0 text-center me-2 " onclick="reloadGame()">Per naujo</button>
+        <button class="closeButton3   p-0 mb-0  btn btn-lg text-center ms-2 ">Uždaryti</button></div>
+    </div>
+
+
+
     </div>
     </div>
 
@@ -841,10 +852,10 @@ $dayGoal = $_SESSION['minutes_goal'];
 
     <div class="timer-container ">
       <h4 class="fst-italic text-center col-12" id="timerTaskName"></h4>
-      <div class="timer col-12">00:06</div>
+      <div class="timer col-12">00:03</div>
       <div class="timer-info d-flex flex-wrap justify-content-center align-items-center col-12">
         <h3 class="timer-label text-center col col-8 com-md-4 col-lg-4 col-xl-4 col-xxl-4">DARBAS</h3>
-        <h3 class="timer-progress col-3 com-md-2 col-lg-2 col-xl-2 col-xxl-2 ">1/3</h3>
+        <h3 class="timer-progress col-3 com-md-2 col-lg-2 col-xl-2 col-xxl-2 ">1/4</h3>
       
         <div class="timer-icons d-flex flex-row text-center justify-content-center align-items-center mt-md-4 mt-sm-4 mt-0 col-12 com-md-5 col-lg-5 col-xl-5 col-xxl-5  ">
           <div class="timer-icon col-3" id="timerPlay">

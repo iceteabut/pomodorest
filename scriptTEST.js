@@ -478,7 +478,7 @@ let taskName="";
 let tasksArr = [];
  let timerElement = document.querySelector('.timer'); //timer, eg 25:00
  let timerLabel = document.querySelector('.timer-label'); //says DARBAS/POILSIS/PERTRAUKA
- let timerProgress = document.querySelector('.timer-progress');//how many sessions before PERTRAUKA, goes 1/3, 2/3, 3/3. then PETRTAUKA, then 1/3...
+ let timerProgress = document.querySelector('.timer-progress');//how many sessions before PERTRAUKA, goes 1/4, 2/4, 3/4. then PETRTAUKA, then 1/3...
  let timerTaskName = document.getElementById('timerTaskName');//task name from tasksArray[i].name
  let restTip = document.getElementById('circleContainer2'); // div displays rest tip
  let restGame = document.getElementById('circleContainer3'); // div displays rest game
@@ -487,9 +487,10 @@ let restTipText = document.querySelector('.restTip');// rest tip text
 //let workTime = workInput.value*60; //ACTUAL VALUE
 let restGame1 = document.querySelector('.game1');
 let restGame2 = document.querySelector('.game2');
+let restGame3 = document.querySelector('.game3');
 restGame1.style.display = "none";
 restGame2.style.display = "none";
-
+restGame3.style.display = "none";
 let gameIdx = 1;
 const workTime = 3; // 3 seconds for demonstration purposes TEST VALUE
 //let restTime = breakInput.value*60;//ACTUAL VALUE
@@ -498,7 +499,7 @@ let timerInterval;
  let timeLeft = workTime; //starts with work
  console.log(timeLeft);
  let isResting = false;//DARBAS
- let sessionNumber = 1;//sessions before long break - 1,2,3 PETRAUKA 1,2,3..
+ let sessionNumber = 1;//sessions before long break - 1,2,3,4 PETRAUKA 1,2,3..
  let roundCount = 1;//which DARBAS-POILSIS (as 1 round) round is that
  let currentTaskRound = 1; //which round of current task is that,changes according to tasksArray[i].round(total rounds of a task) value
  //let breakTime = 6;//6 seconds for demonstration purposes
@@ -521,211 +522,221 @@ if(restTime >= 1) hasBreak = 5;//TEST VALUE
 
  function updateTimer() {
   
-   let minutes = Math.floor(timeLeft / 60);
-   let seconds = timeLeft % 60;
-   timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
- }
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
+  timerElement.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+}
 
- function startTimer() {
-  let intervalSound;
-  updateTimer();
+function startTimer() {
+ let intervalSound;
+ updateTimer();
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    updateTimer();
+ timerInterval = setInterval(() => {
+   timeLeft--;
+   updateTimer();
 
-    if (timeLeft === 0) {
-      
-      clearInterval(timerInterval);
+   if (timeLeft === 0) {
+     
+     clearInterval(timerInterval);
 
-      if (!isResting) {
-        //play assets/rest.mp3
-        intervalSound = new Audio('assets/rest.mp3');
-        intervalSound.play();
-        totalWorkMinutes += Math.round(workTime/60);
-        console.log(totalWorkMinutes);
-        reverseCol();
-        timerLabel.innerText = 'POILSIS';
-        restTip.style.display = "flex";
-        restTip.style.setProperty("display", "flex", "important");
-        flowerContainer.style.setProperty("display", "flex", "important");
-        timeLeft = restTime;
-        isResting = true;
-        restGame.style.display = "none";
-        restGame.style.setProperty("display", "none", "important");
-        sessionNumber++;
-        roundCount++;
-        
-        // Get a random index from restTipsArr
-        const randomIndex = Math.floor(Math.random() * restTipsArr.length);
-        // Set the restTip element's text content to the random element
-        restTipText.textContent = restTipsArr[randomIndex];
-      } 
-      else {
-        //play assets/work.mp3
-        intervalSound = new Audio('assets/work.mp3');
-        intervalSound.play();
-        updateColors();
-        timerLabel.innerText = 'DARBAS';
-        restTip.style.display = "none";
-        restTip.style.setProperty("display", "none", "important");
-        flowerContainer.style.setProperty("display", "none", "important");
-        restGame.style.display = "none";
-        restGame.style.setProperty("display", "none", "important");
-      
-        // Determine the current task round
-        currentTaskRound = 0;
-        let sumRounds = 0;
-        for (let i = 0; i < tasksArr.length; i++) {
-          
-          sumRounds += tasksArr[i].rounds;
-          if (roundCount <= sumRounds) {
-            if (sessionNumber == 3)taskInx = i;
-            currentTaskRound = roundCount - (sumRounds - tasksArr[i].rounds) ;
-            if(sessionNumber==4)timerTaskName.innerText = tasksArr[i].name + ' - Etapas ' + (currentTaskRound-1);
-            else timerTaskName.innerText = tasksArr[i].name + ' - Etapas ' + currentTaskRound;
-            break;
-          }
-        }
-        if (roundCount > sumRounds && tasksArr.length != 0) {
-          //play sound assets/complete.mp3 
-          intervalSound = new Audio('assets/complete.mp3');
-          intervalSound.play();
-          timerTaskName.innerText = 'Visos užduotys baigtos';
-          clearInterval(timerInterval);
-        }
-
-        timeLeft = workTime;
-        console.log(timeLeft);
-        isResting = false;
-        //nera uzduociu
-        if(tasksArr.length == 0){
-          if (sessionNumber <= 3) {
-            updateColors();
-          timerProgress.innerText = `${sessionNumber}/3`;
-          
-          timerProgress.style.visibility = "visible";
-        } 
-        else if (sessionNumber % 4 === 0) {
-          reverseCol();
-          restGame.style.setProperty("display", "flex", "important");
-          if(gameIdx==1){restGameCont.innerHTML=restGame1.innerHTML;
-          game();
-          gameIdx=2;
-          }
-          else{ 
-            restGameCont.innerHTML=restGame2.innerHTML;
-          initializeGame();
-          gameIdx=1;
-          }
-          //play assets/break.mp3
-          intervalSound = new Audio('assets/break.mp3');
-          intervalSound.play();
-          timerLabel.innerText = 'PERTRAUKA';
-          restTip.style.display = "none";
-          restTip.style.setProperty("display", "none", "important");
-          flowerContainer.style.setProperty("display", "flex", "important");
-          timerProgress.style.visibility = "hidden";
-          timeLeft = breakTime;
-          sessionNumber = 1;
-          
-
-        // Get a random index from restTipsArr
-        const randomIndex = Math.floor(Math.random() * restTipsArr.length);
-        // Set the restTip element's text content to the random element
-        restTipText.innerText = restTipsArr[randomIndex];
-
-        } 
-        else {
-          //play assets/work.mp3
-          intervalSound = new Audio('assets/work.mp3');
-          intervalSound.play();
-          updateColors();
-          restGame.style.display = "none";
-          restGame.style.setProperty("display", "none", "important");
-          restTip.style.display = "hidden";
-          restTip.style.setProperty("display", "none", "important");
-          flowerContainer.style.setProperty("display", "none", "important");
-          timerLabel.innerText = 'DARBAS';
-          timerProgress.style.visibility = "visible";
-          timeLeft = workTime;
-          timerProgress.innerText = `${sessionNumber}/3`;
-          
-        }
-      }
-        else{
-        if (sessionNumber <= 3) {
-          updateColors();
-          timerProgress.innerText = `${sessionNumber}/3`;
-         
-          timerProgress.style.visibility = "visible";
-        } 
-        else  {
-            isResting = true;
-            reverseCol();
-          //play assets/break.mp3
-          intervalSound = new Audio('assets/break.mp3');
-          intervalSound.play();
-            //timerTaskName.innerText="";
-            timerLabel.innerText = 'PERTRAUKA';
-            restTip.style.display = "flex";
-            restTip.style.setProperty("display", "none", "important");
-            flowerContainer.style.setProperty("display", "flex", "important");
-            timerProgress.style.visibility = "hidden";
-            restGame.style.setProperty("display", "flex", "important");
-            if(gameIdx==1){
-              
-            game();
-            gameIdx=2;
-            }
-            else{ 
-            
-            initializeGame();
-            gameIdx=1;
-            }
-            timeLeft = breakTime;
-            sessionNumber = 1;
-            //roundCount--;
-            
-          // Get a random index from restTipsArr
-          const randomIndex = Math.floor(Math.random() * restTipsArr.length);
-          // Set the restTip element's text content to the random element
-          restTipText.innerText = restTipsArr[randomIndex];
-        }      
-      }
-      }
-
-      if (tasksArr.length == 0) {
-        setTimeout(startTimer, 1000);
-      } else if (roundCount <= sumRounds) {
-        
-          setTimeout(startTimer, 1000);
-        
-      }
-      else {
-        //play assets/complete.mp3
-        intervalSound = new Audio('assets/complete.mp3');
-        intervalSound.play();
-        timerTaskName.innerText = 'Visos užduotys baigtos';
-      
-
-      if(userId !== null){
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-          }
-        };
-        xhttp.open("POST", "update_stats.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     if (!isResting) {
+       //play assets/rest.mp3
+       intervalSound = new Audio('assets/rest.mp3');
+       intervalSound.play();
+       totalWorkMinutes += Math.round(workTime/60);
+       console.log(totalWorkMinutes);
+       reverseCol();
+       timerLabel.innerText = 'POILSIS';
+       restTip.style.display = "flex";
+       restTip.style.setProperty("display", "flex", "important");
+       flowerContainer.style.setProperty("display", "flex", "important");
+       timeLeft = restTime;
+       isResting = true;
+       restGame.style.display = "none";
+       restGame.style.setProperty("display", "none", "important");
+       sessionNumber++;
+       roundCount++;
        
-        xhttp.send("&user_id="+ userId + "&stat_full_day=true"+ "&stat_minutes=" + totalWorkMinutes + "&stat_rounds=" + roundCount);
-      }
+       // Get a random index from restTipsArr
+       const randomIndex = Math.floor(Math.random() * restTipsArr.length);
+       // Set the restTip element's text content to the random element
+       restTipText.textContent = restTipsArr[randomIndex];
+     } 
+     else {
+       //play assets/work.mp3
+       intervalSound = new Audio('assets/work.mp3');
+       intervalSound.play();
+       updateColors();
+       timerLabel.innerText = 'DARBAS';
+       restTip.style.display = "none";
+       restTip.style.setProperty("display", "none", "important");
+       flowerContainer.style.setProperty("display", "none", "important");
+       restGame.style.display = "none";
+       restGame.style.setProperty("display", "none", "important");
+     
+       // Determine the current task round
+       currentTaskRound = 0;
+       let sumRounds = 0;
+       for (let i = 0; i < tasksArr.length; i++) {
+         
+         sumRounds += tasksArr[i].rounds;
+         if (roundCount <= sumRounds) {
+           if (sessionNumber == 3)taskInx = i;
+           currentTaskRound = roundCount - (sumRounds - tasksArr[i].rounds) ;
+           if(sessionNumber==4)timerTaskName.innerText = tasksArr[i].name + ' - Etapas ' + (currentTaskRound-1);
+           else timerTaskName.innerText = tasksArr[i].name + ' - Etapas ' + currentTaskRound;
+           break;
+         }
+       }
+       if (roundCount > sumRounds && tasksArr.length != 0) {
+         //play sound assets/complete.mp3 
+         intervalSound = new Audio('assets/complete.mp3');
+         intervalSound.play();
+         timerTaskName.innerText = 'Visos užduotys baigtos';
+         clearInterval(timerInterval);
+       }
 
+       timeLeft = workTime;
+       console.log(timeLeft);
+       isResting = false;
+       //nera uzduociu
+       if(tasksArr.length == 0){
+         if (sessionNumber <= 4) {
+           updateColors();
+         timerProgress.innerText = `${sessionNumber}/4`;
+         
+         timerProgress.style.visibility = "visible";
+       } 
+       else if (sessionNumber % 5 === 0) {
+         reverseCol();
+         restGame.style.setProperty("display", "flex", "important");
+         if(gameIdx==1){restGameCont.innerHTML=restGame1.innerHTML;
+         game();
+         gameIdx=2;
+         }
+         else if(gameIdx==2){restGameCont.innerHTML=restGame1.innerHTML;
+           game();
+           gameIdx=3;
+           }
+         else{ 
+         restGameCont.innerHTML=restGame3.innerHTML;
+         reloadGame();
+         gameIdx=1;
+         }
+         //play assets/break.mp3
+         intervalSound = new Audio('assets/break.mp3');
+         intervalSound.play();
+         timerLabel.innerText = 'PERTRAUKA';
+         restTip.style.display = "none";
+         restTip.style.setProperty("display", "none", "important");
+         flowerContainer.style.setProperty("display", "flex", "important");
+         timerProgress.style.visibility = "hidden";
+         timeLeft = breakTime;
+         sessionNumber = 1;
+         
+
+       // Get a random index from restTipsArr
+       const randomIndex = Math.floor(Math.random() * restTipsArr.length);
+       // Set the restTip element's text content to the random element
+       restTipText.innerText = restTipsArr[randomIndex];
+
+       } 
+       else {
+         //play assets/work.mp3
+         intervalSound = new Audio('assets/work.mp3');
+         intervalSound.play();
+         updateColors();
+         restGame.style.display = "none";
+         restGame.style.setProperty("display", "none", "important");
+         restTip.style.display = "hidden";
+         restTip.style.setProperty("display", "none", "important");
+         flowerContainer.style.setProperty("display", "none", "important");
+         timerLabel.innerText = 'DARBAS';
+         timerProgress.style.visibility = "visible";
+         timeLeft = workTime;
+         timerProgress.innerText = `${sessionNumber}/4`;
+         
+       }
+     }
+       else{
+       if (sessionNumber <= 4) {
+         updateColors();
+         timerProgress.innerText = `${sessionNumber}/4`;
+        
+         timerProgress.style.visibility = "visible";
+       } 
+       else  {
+           isResting = true;
+           reverseCol();
+         //play assets/break.mp3
+         intervalSound = new Audio('assets/break.mp3');
+         intervalSound.play();
+           //timerTaskName.innerText="";
+           timerLabel.innerText = 'PERTRAUKA';
+           
+           restTip.style.setProperty("display", "none", "important");
+           flowerContainer.style.setProperty("display", "flex", "important");
+           timerProgress.style.visibility = "hidden";
+           restGame.style.setProperty("display", "flex", "important");
+           if(gameIdx==1){
+           restGameCont.innerHTML=restGame1.innerHTML;
+           game();
+           gameIdx=2;
+           }
+           else if(gameIdx==2){ 
+           restGameCont.innerHTML=restGame2.innerHTML;
+           initializeGame();
+           gameIdx=3;
+           }
+           else{
+           restGameCont.innerHTML=restGame3.innerHTML;
+           reloadGame();
+           gameIdx=1;
+
+           }
+           timeLeft = breakTime;
+           sessionNumber = 1;
+           //roundCount--;
+           
+         // Get a random index from restTipsArr
+         const randomIndex = Math.floor(Math.random() * restTipsArr.length);
+         // Set the restTip element's text content to the random element
+         restTipText.innerText = restTipsArr[randomIndex];
+       }      
+     }
+     }
+
+     if (tasksArr.length == 0) {
+       setTimeout(startTimer, 1000);
+     } else if (roundCount <= sumRounds) {
+       
+         setTimeout(startTimer, 1000);
+       
+     }
+     else {
+       //play assets/complete.mp3
+       intervalSound = new Audio('assets/complete.mp3');
+       intervalSound.play();
+       timerTaskName.innerText = 'Visos užduotys baigtos';
+     
+
+     if(userId !== null){
+       var xhttp = new XMLHttpRequest();
+       xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+           console.log(this.responseText);
+         }
+       };
+       xhttp.open("POST", "update_stats.php", true);
+       xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       
-    }
-    }
-  }, 1000);
+       xhttp.send("&user_id="+ userId + "&stat_full_day=true"+ "&stat_minutes=" + totalWorkMinutes + "&stat_rounds=" + roundCount);
+     }
+
+     
+   }
+   }
+ }, 1000);
 }
 
 
@@ -1936,8 +1947,3 @@ againBtn.addEventListener('click', function () {
 
 // Initialize the game when the page loads
 //window.addEventListener('load', initializeGame);
-restGame.style.setProperty("display", "flex", "important");
-
-
-  restGameCont.innerHTML=restGame2.innerHTML;
-  initializeGame();

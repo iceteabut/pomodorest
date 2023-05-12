@@ -423,6 +423,10 @@ section {
   background-color: var(--dark-accent-color-rest) !important;
   font-size:24px;
 }
+.restart{
+  background-color: var(--dark-accent-color-rest) !important;
+  font-size:24px;
+}
 
 .section-heading {
   font-size: 96px; /* Change the font size of section headings */
@@ -597,13 +601,13 @@ section {
 }*/
 
 .circle3 img {
-  max-width: 30%;
-  max-height: 10%;
+  width: 200px !important;
+  height: 200px!important;
 }
 
 .Hangman {
-  width: 200px;
-  height: 200px;
+  max-width: 200px !important;
+  height: 200px !important;
   margin: 20px;
   display: flex;
   justify-content: center;
@@ -627,7 +631,7 @@ section {
 .letters button {
   margin: 5px;
   padding: 10px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: none;
   background-color: rgb(235, 142, 22);
   color: #fff;
@@ -636,7 +640,7 @@ section {
 
 .message {
   font-size: 1.5rem;
-  margin: 20px;
+  margin: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -652,7 +656,19 @@ section {
   margin-top:-30px;
 }
 
+#circle3 img {
+  max-width: 100px;
+  max-height: 100px;
+}
 
+.Hangman {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 @media screen and (max-width: 767px) {
@@ -837,6 +853,11 @@ h2{
   font-size: 1.5rem !important;
   padding: 5px !important;
   margin-top: 40px;
+}
+.restart{
+  font-size: 1.5rem !important;
+  padding: 5px !important;
+  
 }
 #circleBckgr4 {
   background-color: var(--dark-accent-color);
