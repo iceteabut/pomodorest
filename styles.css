@@ -678,11 +678,12 @@ section {
     display:flex;
     justify-content: center !important;
     margin: auto; 
-
   }
+
   header{
     padding-bottom: 10px;
   }
+  
   header span{
     font-size: 1.4rem;
   }
