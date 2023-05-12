@@ -996,6 +996,8 @@ h2{
 
 #input-fields{
   padding-left: 15px !important;
+  position:absolute;
+  top: 73vw;
   
 }
 
@@ -1047,7 +1049,7 @@ h2{
 
 #settings button {
   font-family: "Lato", sans-serif !important;
- 
+ overflow: hidden;
   font-size: 1rem;
 }
 
