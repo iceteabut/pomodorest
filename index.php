@@ -1286,7 +1286,7 @@ setup();
  
             <?php
     if ($_SESSION['loggedIn'] === true) {
-      echo ' <div class="statsContent col-5 offset-5">
+      echo ' <div class="statsContent col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 offset-0 offset-sm-0 offset-md-5 offset-lg-5 offset-xl-5 offset-xxl-5">
       <div><h2 class=" fs-2 text-center" id="statsMonth">GEGUŽĖ</h2> </div>
       <div class="underline-div mb-3 mt-5">
         <div class="underline-line"></div>
@@ -1380,12 +1380,12 @@ setup();
             ';
     } 
     else {
-      echo '<div class="statsContent col-5 text-center offset-5 ">
+      echo '<div class="statsContent col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 offset-0 offset-sm-0 offset-md-5 offset-lg-5 offset-xl-5 offset-xxl-5 ">
         <div class="underline-div mb-5">
           <div class="underline-line "></div>
         </div>
-        <div><h3 class=" fs-3 text-center mb-4" id="statsLogin">Prisijunkite, kad matytumėte savo statistiką.</h3> </div>
-        <button class="login btn btn-lg col-4 text-center" name="loginStats" id="loginStats" >Prisijungti</button>
+        <div ><h3 class=" fs-3 text-center mb-4" id="statsLogin">Prisijunkite, kad matytumėte savo statistiką.</h3> </div>
+        <div class="d-flex flex-row col-12 justify-content-center"><button class="login btn btn-lg col-5 col-sm-5 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center" name="loginStats" id="loginStats" >Prisijungti</button></div>
 
         <div class="underline-div  mt-5">
           <div class="underline-line"></div>

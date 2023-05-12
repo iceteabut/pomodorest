@@ -715,7 +715,7 @@ section {
 
   }
   .circle h2 {
-    font-size: 3.5vh !important;
+    font-size: 1.5rem !important;
     margin-bottom: -20px !important;
   }
   .circle button, input {
@@ -736,6 +736,10 @@ section {
   .registerInfo h2{
     margin-bottom: 0px !important;
     margin-top:20px;
+  }
+  .registerInfo input{
+    
+    margin-top:-10px;
   }
 
   .timer-info, .timer-label, .timer-progress {
@@ -1030,7 +1034,7 @@ h2{
 
 .colorWrapper input[type=color] {
   display: block;
-  width: 400%;
+  width: 300%;
   height: 100%;
   border: none;
   outline: none;
@@ -1087,8 +1091,8 @@ h2{
 
 #circleBckgr11 {
   background-color: var(--light-accent-color);
-  top: 65%;
-  left: 85%;
+  top: 75%;
+  left: 50%;
   background-image: none;
 }
 
@@ -1103,19 +1107,25 @@ h2{
   color: #fff !important;
   font-family: "Lato", sans-serif !important;
   border: none;
-  font-size: 3.4vh;
+  font-size: 1.6rem;
 }
 
 #stats h4 {
   font-family: "Lato", sans-serif !important;
   color: #524843 !important;
-  font-size: 3.4vh !important;
+  font-size: 1.3rem !important;
+}
+#stats h3{
+  padding-left:25px;
+  padding-right:25px;
 }
 
+.circle button {
+  font-size: 1rem;
+}
 
-
-
-
+.circle input{
+  font-size: 0.8rem;
 }
 /*
 
