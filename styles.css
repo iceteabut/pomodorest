@@ -901,7 +901,7 @@ h2{
   transform: translateY(-50%);
 }
 .circlesRestContainer {
-  width: 100vw;
+  width: 120vw;
   
   margin: 0 auto;
   margin-top: 70vh;
@@ -975,7 +975,7 @@ h2{
 
 #circleBckgr7 {
   background-color: var(--main-accent-color);
-  top: 80vw;
+  top: 60vw;
   
   background-image: none;
 }
@@ -988,14 +988,15 @@ h2{
 
 #circleBckgr9 {
   background-color: var(--light-accent-color);
-  top: 180vw;
-  left: 0%;
+  top: 150vw;
+  left: -40%;
   margin-left:5vw;
   
 }
 
 #input-fields{
   padding-left: 15px !important;
+  
 }
 
 #settings label {
@@ -1003,27 +1004,38 @@ h2{
   font-size: 1rem;
 }
 
+#settings input {
+
+  font-size: 1rem;
+  
+}
+#settings h4{
+  font-size: 1.2rem;
+}
+
 .colorWrapper {
   display: inline-block;
   border: 1px solid rgb(189, 189, 189);
   border-radius: 12px;
   overflow: hidden;
-  height: 2rem;
-  width: 4rem !important;
+  height: 3rem;
+  width: 3rem !important;
   padding: 0px;
   margin-left: 12px;
   margin-right: 0x;
+  
 }
 
 .colorWrapper input[type=color] {
   display: block;
-  width: 200%;
+  width: 400%;
   height: 100%;
   border: none;
   outline: none;
   cursor: pointer;
   border: none;
   margin-left: -3.2vh;
+  
 }
 
 #settings li {
