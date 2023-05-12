@@ -285,24 +285,24 @@ Užduotis, kurioms reikia daugiau nei 5–7 darbo etapų(intervalų), padalinkit
 <div class="circleBckgr" id="circleBckgr6"></div>
     <h1 class="col col-12 section-heading">UŽDUOTYS</h1>
       
-   <div class=" taskAdd mb-5 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 offset-0 offset-sm-0 offset-md-0 offset-lg-4 offset-xl-4 offset-xxl-4">
-    <div> <h2 class="dayTasks text-center" id="currentTasks">mm-dd</h2> </div>
-    <div class="underline-div mb-3 mt-5">
-      <div class="underline-line"></div></div>
+    <div class=" taskAdd mb-5  col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 offset-0 offset-sm-0 offset-md-0 offset-lg-4 offset-xl-4 offset-xxl-4">
+        <div> <h2 class="dayTasks text-center" id="currentTasks">mm-dd</h2> </div>
+        <div class="underline-div mb-3 mt-5">
+          <div class="underline-line"></div></div>
   
     <div class=" pt-5">
     <form  method="POST" action="/index.php">
   
         <div class="addTasks input-group mb-1 " id="add-tasks-group">
-        <input type="text" class="taskName form-control col-4 m-2" name="task[]" id="task" maxlength="255" placeholder="Užduotis" required>
-        <input type="number" class="taskRounds form-control col-2 m-2" min="1" step="1" name="rounds[]" id="rounds" maxlength="255" placeholder="Etapai" required>
+        <input type="text" class="taskName form-control col-7 col-sm-7 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-2" name="task[]" id="task" maxlength="255" placeholder="Užduotis" required>
+        <input type="number" class="taskRounds form-control col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2 m-2" min="1" step="1" name="rounds[]" id="rounds" maxlength="255" placeholder="Etapai" required>
         <button class="btn btn-success  m-2 fs-3 add-tasks-btn" type="button" id="add-tasks-btn">+</button>
       </div>    </div>
     <div class="row">
       <h5 class="recommend col col-6  m-3 ">Viso etapų (rekomenduojama iki 16):</h5>
       <h4 class="col col-4  m-3 text-center" id="roundsTotal">0</h4>
             <div class="row  align-items-center justify-content-center mt-3 col-12 mb-2">
-          <button class="btn   col-4  text-center" type="submit" id="buttonTasks" name="buttonTasks">Išsaugoti užduotis</button>
+          <button class="btn   col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center" type="submit" id="buttonTasks" name="buttonTasks">Išsaugoti užduotis</button>
       </div>;    </div><div class="underline-div my-5">
       <div class="underline-line"></div>
     </div>
