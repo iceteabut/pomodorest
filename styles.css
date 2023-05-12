@@ -1079,6 +1079,42 @@ h2{
   font-size: 0.6rem;
 }
 
+#circleBckgr10 {
+  background-color: var(--dark-accent-color);
+  top: 0vw;
+  left: -25%;
+}
+
+#circleBckgr11 {
+  background-color: var(--light-accent-color);
+  top: 65%;
+  left: 85%;
+  background-image: none;
+}
+
+
+#stats .section-heading {
+  top: 40vw;
+  left: 20px;
+}
+
+#stats button, .circle button {
+  background-color: var(--dark-accent-color) !important;
+  color: #fff !important;
+  font-family: "Lato", sans-serif !important;
+  border: none;
+  font-size: 3.4vh;
+}
+
+#stats h4 {
+  font-family: "Lato", sans-serif !important;
+  color: #524843 !important;
+  font-size: 3.4vh !important;
+}
+
+
+
+
 
 }
 /*
