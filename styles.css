@@ -678,12 +678,11 @@ section {
     display:flex;
     justify-content: center !important;
     margin: auto; 
-  }
 
+  }
   header{
     padding-bottom: 10px;
   }
-  
   header span{
     font-size: 1.4rem;
   }
@@ -700,12 +699,14 @@ section {
     height: 90vw;
     padding:5%;
     position:absolute;
-    top:10vw;
+    top:15vw;
    
   }
   
   .timer {
     font-size: 28vw;
+    margin-top: -5vw;
+    margin-bottom: -5vw;
 
   }
   .circle {
@@ -736,6 +737,7 @@ section {
     margin-bottom: 0px !important;
     margin-top:20px;
   }
+
   .timer-info, .timer-label, .timer-progress {
     
     font-size: 1.5rem !important;
@@ -762,7 +764,8 @@ section {
 
 #circleBckgr1 {
   position:absolute;
-margin:5vw;
+  left:0%;
+  margin:5vw;
 margin-top:0vw;
 
   background-image: none;
@@ -889,11 +892,11 @@ h2{
 }
 #circleBckgr5 {
   background-color: var(--light-accent-color);
-  top: 25vh;
+  top: 30vh;
   left: -25%;
 }
 #rest .section-heading {
-  top: 40%;
+  top: 50vh;
   left: 5vh;
   transform: translateY(-50%);
 }
@@ -901,7 +904,7 @@ h2{
   width: 100vw;
   
   margin: 0 auto;
-  margin-top: 63vh;
+  margin-top: 70vh;
   overflow-x: scroll;
   padding: 20px;
   white-space: nowrap; 
@@ -947,7 +950,7 @@ h2{
 }
 
 #tasks .section-heading {
-  top: 32vh;
+  top: 27vh;
   padding: 0;
   margin: 0;
   text-align: center;
@@ -956,6 +959,14 @@ h2{
  
 }
 
+.taskAdd{
+  margin-top:100vw;
+}
+#buttonTasks {
+  
+  font-size: 1rem !important;
+
+}
 
 }
 /*

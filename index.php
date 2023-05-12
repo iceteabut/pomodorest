@@ -662,7 +662,7 @@ $dayGoal = $_SESSION['minutes_goal'];
   <head>
     <meta charset="UTF-8">
     <title>Timeris</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-7HJrKtpm+hPeOibFQcLeB4AH4l4CrmPUJ5p5vprhXIZ5S1KnjmS5qW8DvJ43xZ+LpMIkEpKDhW0PyvM9P7zxzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -954,9 +954,9 @@ if ($resultTips->num_rows > 0) {
 
 <section id="tasks">
 <div class="circleBckgr" id="circleBckgr6"></div>
-    <h1 class="col col-12 section-heading">UŽDUOTYS</h1>
+    <h1 class="col col-12 section-heading ">UŽDUOTYS</h1>
       
-   <div class=" taskAdd mb-5 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 offset-0 offset-sm-0 offset-md-0 offset-lg-4 offset-xl-4 offset-xxl-4">
+   <div class=" taskAdd mb-5  col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 offset-0 offset-sm-0 offset-md-0 offset-lg-4 offset-xl-4 offset-xxl-4">
     <div> <h2 class="dayTasks text-center" id="currentTasks">mm-dd</h2> </div>
     <div class="underline-div mb-3 mt-5">
       <div class="underline-line"></div></div>
@@ -978,9 +978,9 @@ if ($resultTips->num_rows > 0) {
         $btnText = "Ištrinti užduotis";
         while ($row = $resultTasks->fetch_assoc()) {
           echo '<div class="addTasks input-group mb-1 " id="add-tasks-group">';
-          echo '<input type="text" class="taskName form-control col-4 m-2" name="task[]" id="task" maxlength="255" placeholder="Užduotis" value="' . $row['task_name'] . '" required>';
-          echo '<input type="number" class="taskRounds form-control col-2 m-2" min="1" step="1" name="rounds[]" id="rounds" maxlength="255" placeholder="Etapai" value="' . $row['task_rounds'] . '" required>';
-          echo '<button class="btn btn-success m-2 fs-3 add-tasks-btn" type="button" id="add-tasks-btn">+</button>';
+          echo '<input type="text" class="taskName form-control col-7 col-sm-7 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-2" name="task[]" id="task" maxlength="255" placeholder="Užduotis" value="' . $row['task_name'] . '" required>';
+          echo '<input type="number" class="taskRounds form-control col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2 m-2" min="1" step="1" name="rounds[]" id="rounds" maxlength="255" placeholder="Etapai" value="' . $row['task_rounds'] . '" required>';
+          echo '<button class="btn btn-success col-8 col-sm-8 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-2 fs-4 add-tasks-btn" type="button" id="add-tasks-btn">+</button>';
           echo '</div>';
 
         }
@@ -988,8 +988,8 @@ if ($resultTips->num_rows > 0) {
         $btnName = "buttonTasks";
         $btnText = "Išsaugoti užduotis";
         echo '    <div class="addTasks input-group mb-1 " id="add-tasks-group">
-        <input type="text" class="taskName form-control col-4 m-2" name="task[]" id="task" maxlength="255" placeholder="Užduotis" required>
-        <input type="number" class="taskRounds form-control col-2 m-2" min="1" step="1" name="rounds[]" id="rounds" maxlength="255" placeholder="Etapai" required>
+        <input type="text" class="taskName form-control col-7 col-sm-7 col-md-4 col-lg-4 col-xl-4 col-xxl-4 m-2" name="task[]" id="task" maxlength="255" placeholder="Užduotis" required>
+        <input type="number" class="taskRounds form-control col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2 m-2" min="1" step="1" name="rounds[]" id="rounds" maxlength="255" placeholder="Etapai" required>
         <button class="btn btn-success  m-2 fs-3 add-tasks-btn" type="button" id="add-tasks-btn">+</button>
       </div>';
       
@@ -1012,7 +1012,7 @@ if ($resultTips->num_rows > 0) {
       <?php
       if($_SESSION['loggedIn'] === true) {
           echo '      <div class="row  align-items-center justify-content-center mt-3 col-12 mb-2">
-          <button class="btn   col-4  text-center" type="submit" id="buttonTasks" name="'.$btnName.'">'.$btnText.'</button>
+          <button class="btn   col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4  text-center" type="submit" id="buttonTasks" name="'.$btnName.'">'.$btnText.'</button>
       </div>;';}?>
     </div><div class="underline-div my-5">
       <div class="underline-line"></div>
